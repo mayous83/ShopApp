@@ -1,0 +1,122 @@
+Ecco un esempio di `.gitignore` completo per una soluzione .NET, che include le regole comuni per progetti .NET, Visual Studio, JetBrains Rider e altre configurazioni correlate:
+
+```plaintext
+# Build results
+bin/
+obj/
+out/
+
+# Rider project files
+.idea/
+*.sln.iml
+/.idea/
+
+# Rider directories
+.vs/
+/.vs/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+.vscode/*
+
+# Rider directories
+/.idea/
+.idea/
+.idea/*
+
+# Logs
+*.log
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+/packages/
+.nuget/
+
+# DotNet specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.lib
+*.ndk
+*.obj
+*.o
+*.so
+*.dylib
+*.class
+*.jar
+*.war
+*.ear
+*.xpi
+*.zip
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.gz
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.msi
+*.msp
+*.msm
+*.iso
+*.dmg
+*.pkg
+*.deb
+*.rpm
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.temp
+*.old
+*.orig
+*.rej
+*.log
+*.trace
+*.dmp
+*.mdmp
+*.stackdump
+*.core
+*.pid
+*.lock
+*.log
+*.trace
+*.dmp
+*.mdmp
+*.stackdump
+*.core
+*.pid
+*.lock
+```
+
+# Rider specific
+qodana.yaml

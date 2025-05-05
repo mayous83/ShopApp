@@ -1,0 +1,54 @@
+services:
+  address-db:
+    image: postgres:16
+    container_name: address-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: addresses_db
+    volumes:
+      - address_pgdata:/var/lib/postgresql/data
+        
+  users-db:
+    image: postgres:16
+    container_name: users-db
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: users_db
+    volumes:
+      - users_pgdata:/var/lib/postgresql/data
+        
+  products-db:
+    image: postgres:16
+    container_name: products-db
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: products_db
+    volumes:
+      - products_pgdata:/var/lib/postgresql/data
+        
+  orders-db:
+    image: postgres:16
+    container_name: orders-db
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: orders_db
+    volumes:
+      - orders_pgdata:/var/lib/postgresql/data
+
+volumes:
+  address_pgdata:
+  users_pgdata:
+  products_pgdata:
+  orders_pgdata:
