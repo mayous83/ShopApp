@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShopApp.Products.Service.Database;
-using ShopApp.Shared.Library;
+using ShopApp.Shared.Library.DTOs;
 
 namespace ShopApp.Products.Service.Features.ReserveStockRequest;
 

@@ -17,8 +17,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
 
+var rabbitMqHost = builder.Configuration["RabbitMq:Host"];
+ArgumentNullException.ThrowIfNull(rabbitMqHost);
+
 builder.Services.AddSingleton<IMessageBus>(sp =>
-    new RabbitMqMessageBus(builder.Configuration["RabbitMq:Host"]));
+    new RabbitMqMessageBus(rabbitMqHost));
 
 builder.Services.Scan(scan => scan
     .FromAssemblyOf<OrderCreatedConsumer>()

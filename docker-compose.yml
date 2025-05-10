@@ -46,6 +46,17 @@ services:
       POSTGRES_DB: orders_db
     volumes:
       - orders_pgdata:/var/lib/postgresql/data
+      - 
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
 
 volumes:
   address_pgdata:

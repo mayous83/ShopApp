@@ -1,4 +1,4 @@
-namespace ShopApp.Shared.Library;
+namespace ShopApp.Shared.Library.Database;
 
 public abstract class BaseEntity
 {

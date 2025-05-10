@@ -10,9 +10,15 @@ public class RabbitMqMessageBus : IMessageBus, IDisposable
     private readonly IConnection _connection;
     private readonly IModel _channel;
 
-    public RabbitMqMessageBus(string hostName)
+    public RabbitMqMessageBus(string hostName, int port = 5672, string userName = "guest", string password = "guest")
     {
-        var factory = new ConnectionFactory() { HostName = hostName };
+        var factory = new ConnectionFactory()
+        {
+            HostName = hostName,
+            Port = port,
+            UserName = userName,
+            Password = password
+        };
         _connection = factory.CreateConnection();
         _channel = _connection.CreateModel();
     }
@@ -46,7 +52,8 @@ public class RabbitMqMessageBus : IMessageBus, IDisposable
 
     public void Dispose()
     {
-        _channel.Dispose();
-        _connection.Dispose();
+        _channel?.Dispose();
+        _connection?.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

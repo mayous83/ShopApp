@@ -53,14 +53,32 @@ builder.Services.AddHttpClient("AddressesService", client =>
 });
 
 var rabbitHost = builder.Configuration["RabbitMq:Host"];
+var rabbitPort = builder.Configuration["RabbitMq:Port"];
+var rabbitUserName = builder.Configuration["RabbitMq:UserName"];
+var rabbitPassword = builder.Configuration["RabbitMq:Password"];
 
 if (string.IsNullOrEmpty(rabbitHost))
 {
     throw new ApplicationException("RabbitMQ host is not configured.");
 }
 
+if (string.IsNullOrEmpty(rabbitPort) || !int.TryParse(rabbitPort, out var parsedRabbitPort))
+{
+    throw new ApplicationException("RabbitMQ port is not configured.");
+}
+
+if (string.IsNullOrEmpty(rabbitUserName))
+{
+    throw new ApplicationException("RabbitMQ username is not configured.");
+}
+
+if (string.IsNullOrEmpty(rabbitPassword))
+{
+    throw new ApplicationException("RabbitMQ password is not configured.");
+}
+
 builder.Services.AddSingleton<IMessageBus>(sp =>
-    new RabbitMqMessageBus(rabbitHost));
+    new RabbitMqMessageBus(rabbitHost, parsedRabbitPort, rabbitUserName, rabbitPassword));
 
 var app = builder.Build();
 

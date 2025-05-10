@@ -1,6 +1,5 @@
-
 using ShopApp.Orders.Service.Database.Migrations;
-using ShopApp.Shared.Library;
+using ShopApp.Shared.Library.Database;
 
 namespace ShopApp.Orders.Service.Database;
 

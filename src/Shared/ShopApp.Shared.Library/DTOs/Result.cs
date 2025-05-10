@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Http;
-
-namespace ShopApp.Shared.Library;
+namespace ShopApp.Shared.Library.DTOs;
 
 public sealed class Result<T>
 {
-    public bool Success { get; set; }
-    public string Message { get; set; }
-    public T? Data { get; set; }
+    public bool Success { get; private set; }
+    public string Message { get; private set; }
+    public T? Data { get; private set; }
 
     private Result(bool success, string message, T? data)
     {

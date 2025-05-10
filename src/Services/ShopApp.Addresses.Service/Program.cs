@@ -4,6 +4,7 @@ using ShopApp.Addresses.Service.Database;
 using ShopApp.Addresses.Service.Features;
 using ShopApp.Addresses.Service.Features.CreateAddress;
 using ShopApp.Addresses.Service.Features.GetAddressById;
+using ShopApp.Addresses.Service.Features.ListAddresses;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,6 @@ if (app.Environment.IsDevelopment())
 app.MapGet("/", () => "Addresses Service is running!");
 CreateAddressEndpoint.Map(app);
 GetAddressByIdEndpoint.Map(app);
-
+ListAddressesEndpoint.Map(app);
 
 app.Run();

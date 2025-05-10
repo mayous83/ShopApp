@@ -1,5 +1,4 @@
-
-using ShopApp.Shared.Library;
+using ShopApp.Shared.Library.Database;
 
 namespace ShopApp.Products.Service.Database;
 

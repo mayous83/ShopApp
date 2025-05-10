@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ShopApp.Shared.Library;
+using ShopApp.Shared.Library.Database;
 
 namespace ShopApp.Addresses.Service.Database;
 
