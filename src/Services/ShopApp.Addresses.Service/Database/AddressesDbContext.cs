@@ -1,14 +1,16 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using ShopApp.Shared.Library.Database;
+using ShopApp.Shared.Library.DTOs;
 
 namespace ShopApp.Addresses.Service.Database;
 
-public sealed class AddressesDbContext : DbContext
+public class AddressesDbContext : DbContext
 {
     public AddressesDbContext(DbContextOptions<AddressesDbContext> options) : base(options){ }
     
     public DbSet<Address> Addresses => Set<Address>();
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Apply configuration to all entities inheriting BaseEntity

@@ -7,9 +7,13 @@ public static class ListAddressesEndpoint
 {
     public static void Map(WebApplication app)
     {
-        app.MapGet("/addresses", async (int page, int pageSize, string? search, AddressesDbContext dbContext, HttpContext httpContext) =>
+        app.MapGet("/addresses", async (int? page, int? pageSize, string? search, AddressesDbContext dbContext, HttpContext httpContext) =>
         {
-            var request = new ListAddressesRequest(search, page, pageSize);
+            
+            var pageValue = page ?? 1;
+            var pageSizeValue = pageSize ?? 10;
+            
+            var request = new ListAddressesRequest(search, pageValue, pageSizeValue);
             
             // Validate the request
             if (page <= 0 || pageSize <= 0)
