@@ -54,7 +54,7 @@ builder.Services.AddHttpClient("AddressesService", client =>
 
 var rabbitHost = builder.Configuration["RabbitMq:Host"];
 var rabbitPort = builder.Configuration["RabbitMq:Port"];
-var rabbitUserName = builder.Configuration["RabbitMq:UserName"];
+var rabbitUserName = builder.Configuration["RabbitMq:Username"];
 var rabbitPassword = builder.Configuration["RabbitMq:Password"];
 
 if (string.IsNullOrEmpty(rabbitHost))
