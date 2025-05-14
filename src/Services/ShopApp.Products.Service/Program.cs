@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using ShopApp.Products.Service.Database;
 using ShopApp.Products.Service.Features.CreateProduct;
 using ShopApp.Products.Service.Features.DecrementProductStockQuantity;
+using ShopApp.Products.Service.Features.DeleteProduct;
 using ShopApp.Products.Service.Features.GetProductById;
+using ShopApp.Products.Service.Features.ListProducts;
 using ShopApp.Products.Service.Features.ReserveStockRequest;
 using ShopApp.Shared.Library.Messaging;
 
@@ -43,6 +45,8 @@ if (app.Environment.IsDevelopment())
 CreateProductEndpoint.Map(app);
 GetProductByIdEndpoint.Map(app);
 ReserveStockEndpoint.Map(app);
+ListProductsEndpoint.Map(app);
+
 app.MapGet("/", () => "Products Service is running!");
 
 app.Run();
