@@ -15,7 +15,8 @@ public class ListOrdersHandler {
     
     public async Task<ListRequestResponseDto<Order>> Handle(ListOrdersRequest request, CancellationToken cancellationToken)
     {
-        var query = _dbContext.Orders.AsQueryable();
+        var query = _dbContext.Orders
+            .Include(o => o.Items).AsQueryable();
         //ignore search for now query paginated orders
         var totalCount = await query.CountAsync(cancellationToken);
         var orders = await query

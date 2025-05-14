@@ -2,7 +2,9 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ShopApp.Users.Service.Database;
 using ShopApp.Users.Service.Features.CreateUser;
+using ShopApp.Users.Service.Features.DeleteUser;
 using ShopApp.Users.Service.Features.GetUserById;
+using ShopApp.Users.Service.Features.ListUsers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,8 @@ if (app.Environment.IsDevelopment())
 
 CreateUserEndpoint.Map(app);
 GetUserByIdEndpoint.Map(app);
+ListUsersEndpoint.Map(app);
+DeleteUserEndpoint.Map(app);
 app.MapGet("/", () => "Users Service is running!");
 
 app.Run();

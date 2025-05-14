@@ -2,6 +2,9 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ShopApp.Orders.Service.Database;
 using ShopApp.Orders.Service.Features.CreateOrder;
+using ShopApp.Orders.Service.Features.DeleteOrder;
+using ShopApp.Orders.Service.Features.GetOrderById;
+using ShopApp.Orders.Service.Features.ListOrders;
 using ShopApp.Shared.Library.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -89,6 +92,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-CreateOrderEndpoint.Map(app);
 app.MapGet("/", () => "Orders Service is running!");
+ListOrdersEndpoint.Map(app);
+CreateOrderEndpoint.Map(app);
+DeleteOrderEndpoint.Map(app);
+GetOrderByIdEndpoint.Map(app);
 app.Run();
