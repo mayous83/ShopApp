@@ -24,14 +24,15 @@ public class CreateAddressEndpointTest : IClassFixture<WebApplicationFactory<Pro
     public async Task Post_ShouldReturnCreated_WhenRequestIsValid()
     {
         var serviceProvider = ServiceProviderFactory.Create();
+        using var serviceProviderScope = serviceProvider.CreateScope();
+        var dbContext = serviceProviderScope.ServiceProvider.GetRequiredService<AddressesDbContext>();
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton(serviceProvider);
+                services.AddSingleton(dbContext);
             });
-        }).CreateClient();
-        
+        }).CreateClient();        
         var request = new CreateAddressRequest
         {
             Street = "123 Main St",
@@ -49,13 +50,15 @@ public class CreateAddressEndpointTest : IClassFixture<WebApplicationFactory<Pro
     public async Task Post_ShouldReturnValidationProblem_WhenRequestIsInvalid()
     {
         var serviceProvider = ServiceProviderFactory.Create();
+        using var serviceProviderScope = serviceProvider.CreateScope();
+        var dbContext = serviceProviderScope.ServiceProvider.GetRequiredService<AddressesDbContext>();
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton(serviceProvider);
+                services.AddSingleton(dbContext);
             });
-        }).CreateClient();  
+        }).CreateClient();
         
         var request = new CreateAddressRequest
         {

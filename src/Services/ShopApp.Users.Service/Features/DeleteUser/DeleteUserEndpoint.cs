@@ -6,7 +6,7 @@ public static class DeleteUserEndpoint
 {
     public static void Map(WebApplication app)
     {
-        app.MapDelete("/api/v1/users/{id:guid}", async (Guid id, UsersDbContext dbContext, HttpContext httpContext) =>
+        app.MapDelete("/users/{id:guid}", async (Guid id, UsersDbContext dbContext, HttpContext httpContext) =>
         {
             var handler = new DeleteUserHandler(dbContext);
             var result = await handler.Handle(new DeleteUserRequest(id), httpContext.RequestAborted);

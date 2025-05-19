@@ -56,14 +56,15 @@ public class DeleteAddressEnpointTest : IClassFixture<WebApplicationFactory<Prog
     public async Task Delete_ShouldReturnNotFound_WhenAddressDoesNotExist()
     {
         var serviceProvider = ServiceProviderFactory.Create();
+        using var serviceProviderScope = serviceProvider.CreateScope();
+        var dbContext = serviceProviderScope.ServiceProvider.GetRequiredService<AddressesDbContext>();
         var client = _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton(serviceProvider);
+                services.AddSingleton(dbContext);
             });
-        }).CreateClient();
-        
+        }).CreateClient();        
         var addressId = Guid.NewGuid();
         var response = await client.DeleteAsync($"/addresses/{addressId}");
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
